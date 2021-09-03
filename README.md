@@ -1,1 +1,17 @@
 # Wine-Quality
+
+I chose a wine quality dataset of both red and white wines, to predict by the quality feature. I also take a visual look at a few other features, just to see how other features of wine correlate to its quality. 
+I begin by doing some data cleaning by checking the shape of the dataset, and for any missing values. The original dataset contains 6,497 rows and 13 columns, with no missing values. However, there are 1,177 duplicated rows that needed to be cleaned up, because duplicate rows can make the data unstable. This results in dropping the duplicate rows so that I could perform better modeling. After the cleanup steps, my dataset contains 13 columns, and 5,320 rows. In the next step, I wanted to count the wine by the type: red, white to give me an idea of how even or uneven the data could be. The white wines make up 74% of the data, whereas the red wines are 25%. My last step in the data cleanup, was to look at the quality distribution by wine type, and total count. I discovered that the quality ranged from 0-10, with 10 being the best. However, most wines fall into the mid-range of quality at 6, with 5 that fell into excellent range of 10, and perhaps about 30% fall into the lower quality end. 
+I then took another visual look at other features of the wine: alcohol, sulphates, and residual sugar. This gave me an idea of where I could make some quality predictions of the wine, and to understand each feature possibly better. I first looked at residual sugar compared to the quality and found that the sugar level does not have much of effect on quality. I then looked at sulphates vs. quality and could see that quality increased with higher levels of sulphates; but at the excellent quality level, the sulphates decreased slightly. Lastly, I compared alcohol to the quality, and found that quality increased steadily with higher amounts of alcohol. 
+I can now begin the preprocessing of the data to prepare for the ML algorithms. I want to divide the wine by the quality in groups of “poor” and “bad”, instead of just the numerical values. I also group the quality by alcohol content, then group again by alcohol vs. the type. This confirms for me that this data does not show any clear evidence that quality is better by type. But it does show that the quality is better by the alcohol rating that I created by grouping:
+type     alcohol     quality      
+red       (8, 10]      0.973312
+           (10, 12]     0.818182
+           (12, 14]     0.535433
+white  (8, 10]       0.948473
+           (10, 12]    0.763483
+           (12, 14]    0.490228
+ Next, I split and train my data, so that I can implement three (3) classifiers: Decision Tree, Naïve Bayes (Gaussian), and k Nearest Neighbors. I perform a 50/50 split for each, make my predictions, and show the accuracy. My Decision Tree gave me an 82% accuracy, whereas my Naïve Bayesian and kNN classifiers scored 79% and 78%, respectively. 
+So, overall, I found it is best to take an exploratory data analysis of the dataset first, before preparing for the machine learning algorithms. I think that this helps to better identify and understand the features of a dataset before beginning the ML algorithms. I think that perhaps implementing different classifiers and possibly different features could produce better accuracy of this dataset, but I was more curious about the overall quality and how alcohol level played a role.
+![image](https://user-images.githubusercontent.com/75954137/131934421-9a608749-2153-493b-963d-a860812dbe45.png)
+
